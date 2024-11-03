@@ -1,5 +1,5 @@
 import React from "react";
-import { layouts } from "../../features/data";
+import { layouts } from "../../helper/layoutData";
 import Link from "next/link";
 const Layouts = () => {
   return (
@@ -14,7 +14,7 @@ const Layouts = () => {
             <div className="flex justify-between">
               <h2 className="text-lg font-bold">{item.title}</h2>
               <Link
-                href={`layout-${item.id}/edit`}
+                href={`${item.name}/edit`}
                 target="_blank"
                 className="hover:underline text-blue-500"
               >
@@ -23,9 +23,10 @@ const Layouts = () => {
             </div>
             <div className="flex flex-col gap-1 pt-2">
               <span className="font-semibold text-gray-400">Pages</span>
-              {item.pages.map((page) => (
+              {item.pages.map((page, index2) => (
                 <Link
                   href={`${page.url}`}
+                  key={"child" + index2}
                   target="_blank"
                   className="w-fit hover:underline"
                 >
